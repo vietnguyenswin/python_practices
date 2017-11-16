@@ -11,7 +11,7 @@ def input_string():
 
 
 def string_process():
-    # Assigning value for a vairbl
+    # Assigning value for a variable
     s = input_string()
     if s.isalpha():
         print "input is alpha characters"
