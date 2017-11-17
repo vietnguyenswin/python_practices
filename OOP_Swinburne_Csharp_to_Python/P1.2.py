@@ -51,23 +51,22 @@ class Main(Counter):
 
     @staticmethod
     def act():
+        # create a list with length = 3
+        my_counters = [Counter] * 3
         # create new instances of Counter object
-        my_counters1 = Counter("Counter 1")
-        my_counters2 = Counter("Counter 2")
-        my_counters3 = my_counters1
-        # Assign the instances to the instance list
-        my_counters = [my_counters1, my_counters2, my_counters3]
-
+        my_counters[0] = Counter("Counter 1")
+        my_counters[1] = Counter("Counter 2")
+        my_counters[2] = my_counters[0]
         # for loop
         for i in range(0, 4):
             # call the method
-            my_counters1.increment()
+            my_counters[0].increment()
 
         for i in range(0, 9):
-            my_counters2.increment()
+            my_counters[1].increment()
 
         Main.printing(my_counters)
-        my_counters3.reset()
+        my_counters[2].reset()
         Main.printing(my_counters)
 
 Main.act()
