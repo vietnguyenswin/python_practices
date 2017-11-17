@@ -32,6 +32,7 @@ class Message(object):
     def prt(self):
         print(self.__msg)
 
+
 # Define Main class. This class uses the method in Message class
 class Main(Message):
     # Create instances of Message object
@@ -40,10 +41,8 @@ class Main(Message):
     msg2 = Message("What a lovely name")
     msg3 = Message("Great name")
     msg4 = Message("Beautiful name")
-    # Send a message to Message object
-    Message.prt(hello_world)
-    # Python list (similar to Java array)
-    messages = [msg1, msg2, msg3, msg4]
+    # Print it
+    hello_world.prt()
     # Iteration - infinity loop
     while True:
         # Ask for user's input
@@ -51,10 +50,10 @@ class Main(Message):
         # Control flow with if-else condition
         # lower() converts raw input to under case format
         if name.lower() == "viet":
-            Message.prt(messages[0])
+            msg1.prt()
         elif name.lower() == "fred":
-            Message.prt(messages[1])
+            msg2.prt()
         elif name.lower() == "wilma":
-            Message.prt(messages[2])
+            msg3.prt()
         else:
-            Message.prt(messages[3])
+            msg4.prt()
