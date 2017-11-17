@@ -37,12 +37,15 @@ class Message(object):
 class Main(Message):
     # Create instances of Message object
     hello_world = Message("Hello World!")
-    msg1 = Message("Welcome back my friend!")
-    msg2 = Message("What a lovely name")
-    msg3 = Message("Great name")
-    msg4 = Message("Beautiful name")
     # Print it
     hello_world.prt()
+    # Define response messages
+    msg1 = "Welcome back my friend!"
+    msg2 = "What a lovely name"
+    msg3 = "Great name"
+    msg4 = "Beautiful name"
+    # Assign the messages to Python list
+    messages = [msg1, msg2, msg3, msg4]
     # Iteration - infinity loop
     while True:
         # Ask for user's input
@@ -50,10 +53,10 @@ class Main(Message):
         # Control flow with if-else condition
         # lower() converts raw input to under case format
         if name.lower() == "viet":
-            msg1.prt()
+            print(messages[0])
         elif name.lower() == "fred":
-            msg2.prt()
+            print(messages[1])
         elif name.lower() == "wilma":
-            msg3.prt()
+            print(messages[2])
         else:
-            msg4.prt()
+            print(messages[3])
