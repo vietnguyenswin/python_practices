@@ -17,6 +17,7 @@
 import time
 import os
 
+
 # Define Counter class for Counter object
 class Counter(object):
     # new instance of Counter object will be assigned init value = 0 when created
@@ -35,29 +36,35 @@ class Counter(object):
     def value(self):
         return self.__count
 
+
 # Define Clock class
 class Clock(Counter):
-    @staticmethod
-    def mechanism():
-        # Create new instances of Counter object
-        hour = Counter()
-        minute = Counter()
-        second = Counter()
-        # Infinity loop
-        while True:
-            # Tick the second just like the functional clock
-            second.tick()
-            # Hold on, wait for 1 second until another tick
-            time.sleep(1)
-            if second.value >= 60:
-                minute.tick()
-                second.reset()
-            if minute.value >= 60:
-                hour.tick()
-                minute.reset()
-            if hour.value >= 24:
-                hour.reset()
+    def __init__(self):
+        super(Clock, self).__init__()
+        self.hour = Counter()
+        self.minute = Counter()
+        self.second = Counter()
 
+    def __mechanism(self):
+        # Tick the second just like the functional clock
+        self.second.tick()
+        # Hold on, wait for 1 second until another tick
+        time.sleep(1)
+        # if condition to control the tick
+        if self.second.value >= 60:
+            self.minute.tick()
+            self.second.reset()
+        if self.minute.value >= 60:
+            self.hour.tick()
+            self.minute.reset()
+        if self.hour.value >= 24:
+            self.hour.reset()
+
+    def display(self):
+        # infinity loop
+        while True:
+            # send message to the mechanism method
+            self.__mechanism()
             # check if the current OS system is Windows or Mac
             # clear previous printed message before printing the new one
             if os.name != "nt":
@@ -66,9 +73,10 @@ class Clock(Counter):
                 os.system("cls")
             # print the clock
             # use format function | 0>2d: 5 --> 05
-            print("{0:0>2d}:{1:0>2d}:{2:0>2d}".format(hour.value, minute.value, second.value))
+            print("{0:0>2d}:{1:0>2d}:{2:0>2d}".format(self.hour.value, self.minute.value, self.second.value))
+
 
 # create an instance of the Clock object
 clock = Clock()
 # call the method
-clock.mechanism()
+clock.display()
