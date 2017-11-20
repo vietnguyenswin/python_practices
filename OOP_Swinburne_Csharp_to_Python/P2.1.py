@@ -10,7 +10,7 @@
                  + The works of this version are public. Nevertheless, you should not copy & paste without understanding
                     the mechanisms behind.
     Instruction: + Use cd command to redirect the terminal working directory into the folder which you store this file.
-                 + Execute this command: python P3.2.py
+                 + Execute this command: python P2.1.py
     Last modified: 20 Nov 2017
 """
 
@@ -19,13 +19,14 @@ from turtle import *
 # import random module to use random selection
 import random
 
+
 # Define Draw class
 class Draw(object):
     # Define static method of fill_rectangle which will be call to draw a rectangle
     @staticmethod
     def fill_rectangle(color, x, y, height, width):
-        # create an instance of turtle
         t = Turtle()
+        # create an instance of turtle
         # hide the arrow (turtle)
         t.hideturtle()
         # act as fast as it can
@@ -53,8 +54,7 @@ class Draw(object):
         t.end_fill()
         # fill the shape now
         t.fillcolor(color)
-        # please don't close the window
-        mainloop()
+
 
 # Define Shape class
 class Shape(Draw):
@@ -108,6 +108,7 @@ class Shape(Draw):
     def draw(self):
         Draw.fill_rectangle(self.__color, self.__x, self.__y, self.__height, self.__width)
 
+
 # Define Main class
 class Main(Shape):
     @staticmethod
@@ -119,7 +120,7 @@ class Main(Shape):
         new_y = random.choice(tuple(range(-200, 200)))
         # Random color
         # colors tuple
-        colors = ("blue", "black", "green", "orange")
+        colors = ("blue", "black", "green", "orange", "red", "purple")
         # pick up one
         my_shape.color = random.choice(colors)
         # assign new_x & new_y to new shape
@@ -127,6 +128,9 @@ class Main(Shape):
         my_shape.y = new_y
         # draw the shape
         my_shape.draw()
+        # please don't close the window
+        mainloop()
+
 
 m = Main()
 m.action()
