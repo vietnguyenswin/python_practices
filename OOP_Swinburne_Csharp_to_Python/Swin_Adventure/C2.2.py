@@ -12,3 +12,20 @@
     Instruction: + Update later
     Last modified: 21 Nov 2017
 """
+
+
+class Identifiable(object):
+    def __init__(self, idents):
+        self.__identifiers = list(idents)
+
+    def are_you(self, id):
+        if id in self.__identifiers:
+            # return True
+            print("oh yeah")
+        else:
+            # return False
+            print("oh no")
+
+
+test = Identifiable(["hello", "hi"])
+test.are_you("hello")
