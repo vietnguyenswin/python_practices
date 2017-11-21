@@ -12,12 +12,13 @@
     Instruction: + Update later
     Last modified: 21 Nov 2017
 """
+import unittest
 
 # define Identifiable class
 class Identifiable(object):
     # constructor adds identifiers to the Identifiable object from the passed list
     def __init__(self, idents):
-        self.__identifiers = list(list(idents))
+        self.__identifiers = list(idents)
 
     # check if the passed in identifier is in the __identifiers
     def are_you(self, id):
@@ -31,14 +32,32 @@ class Identifiable(object):
     # return the first identifier in __identifiers
     @property
     def first_id(self):
-        return self.__identifiers[0][0]
+        return self.__identifiers[0]
 
     # convert the identifier to lowercase and add it to __identifiers list
     def add_identifier(self, new_id):
         self.__identifiers.append(str(new_id).lower())
 
 
-test = Identifiable([["hello", "hi"]])
-test.add_identifier("ajinomoto")
-test.are_you("ajinomoto")
-print test.first_id
+class TestsIteration(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def test_are_you(self):
+        test = Identifiable(["hello", "hi"])
+        self.assertEqual(True, test.are_you("hello"))
+
+    def test_first_id(self):
+        test = Identifiable(["hello", "hi"])
+        self.assertEqual("hello", test.first_id)
+
+    def test_add_identifier(self):
+        test = Identifiable([])
+        test.add_identifier("hello")
+        self.assertEqual(True, test.are_you("hello"))
+
+if __name__ == '__main__':
+    unittest.main()
