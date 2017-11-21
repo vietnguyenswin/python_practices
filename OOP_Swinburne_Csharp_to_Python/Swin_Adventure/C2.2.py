@@ -17,7 +17,7 @@
 class Identifiable(object):
     # constructor adds identifiers to the Identifiable object from the passed list
     def __init__(self, idents):
-        self.__identifiers = list(idents)
+        self.__identifiers = list(list(idents))
 
     # check if the passed in identifier is in the __identifiers
     def are_you(self, id):
@@ -31,14 +31,14 @@ class Identifiable(object):
     # return the first identifier in __identifiers
     @property
     def first_id(self):
-        return self.__identifiers[0]
+        return self.__identifiers[0][0]
 
     # convert the identifier to lowercase and add it to __identifiers list
     def add_identifier(self, new_id):
         self.__identifiers.append(str(new_id).lower())
 
 
-test = Identifiable(["hello", "hi"])
+test = Identifiable([["hello", "hi"]])
 test.add_identifier("ajinomoto")
 test.are_you("ajinomoto")
 print test.first_id
