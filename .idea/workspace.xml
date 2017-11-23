@@ -24,7 +24,7 @@
     <SUITE FILE_PATH="coverage/python_practices$P3_2.coverage" NAME="P3.2 Coverage Results" MODIFIED="1511014634271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OOP_Swinburne_Csharp_to_Python" />
     <SUITE FILE_PATH="coverage/python_practices$P1_1.coverage" NAME="P1.1 Coverage Results" MODIFIED="1510924528547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OOP_Swinburne_Csharp_to_Python" />
     <SUITE FILE_PATH="coverage/python_practices$e1.coverage" NAME="e1 Coverage Results" MODIFIED="1510756138433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/python_practices$C2_2.coverage" NAME="C2.2 Coverage Results" MODIFIED="1511443224779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OOP_Swinburne_Csharp_to_Python/Swin_Adventure" />
+    <SUITE FILE_PATH="coverage/python_practices$C2_2.coverage" NAME="C2.2 Coverage Results" MODIFIED="1511445476078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OOP_Swinburne_Csharp_to_Python/Swin_Adventure" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -75,13 +75,19 @@
       <file leaf-file-name="C2.2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OOP_Swinburne_Csharp_to_Python/Swin_Adventure/C2.2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1453">
-              <caret line="174" column="0" lean-forward="true" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+            <state relative-caret-position="155">
+              <caret line="89" column="45" lean-forward="false" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
               <folding>
-                <element signature="e#3200#3571#0" expanded="false" />
-                <element signature="e#3622#4973#0" expanded="false" />
-                <element signature="e#5019#5587#0" expanded="false" />
-                <element signature="e#5635#5900#0" expanded="false" />
+                <element signature="e#869#1569#0" expanded="false" />
+                <element signature="e#1607#1985#0" expanded="false" />
+                <element signature="e#2015#2198#0" expanded="false" />
+                <element signature="e#2230#3008#0" expanded="false" />
+                <element signature="e#3039#3771#0" expanded="false" />
+                <element signature="e#3818#4189#0" expanded="false" />
+                <element signature="e#4240#5591#0" expanded="false" />
+                <element signature="e#4265#4538#0" expanded="false" />
+                <element signature="e#5637#6205#0" expanded="false" />
+                <element signature="e#6253#7369#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -530,7 +536,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -914,13 +922,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OOP_Swinburne_Csharp_to_Python/Swin_Adventure/C2.2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1453">
-          <caret line="174" column="0" lean-forward="true" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+        <state relative-caret-position="155">
+          <caret line="89" column="45" lean-forward="false" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
           <folding>
-            <element signature="e#3200#3571#0" expanded="false" />
-            <element signature="e#3622#4973#0" expanded="false" />
-            <element signature="e#5019#5587#0" expanded="false" />
-            <element signature="e#5635#5900#0" expanded="false" />
+            <element signature="e#869#1569#0" expanded="false" />
+            <element signature="e#1607#1985#0" expanded="false" />
+            <element signature="e#2015#2198#0" expanded="false" />
+            <element signature="e#2230#3008#0" expanded="false" />
+            <element signature="e#3039#3771#0" expanded="false" />
+            <element signature="e#3818#4189#0" expanded="false" />
+            <element signature="e#4240#5591#0" expanded="false" />
+            <element signature="e#4265#4538#0" expanded="false" />
+            <element signature="e#5637#6205#0" expanded="false" />
+            <element signature="e#6253#7369#0" expanded="false" />
           </folding>
         </state>
       </provider>

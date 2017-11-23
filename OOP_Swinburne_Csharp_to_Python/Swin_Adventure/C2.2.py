@@ -14,7 +14,6 @@
 """
 import unittest
 
-
 # define Identifiable class
 class Identifiable(object):
     # constructor adds identifiers to the Identifiable object from the passed list
@@ -39,7 +38,6 @@ class Identifiable(object):
     def add_identifier(self, new_id):
         self.__identifiers.append(str(new_id).lower())
 
-
 class GameObject(Identifiable):
     def __init__(self, ids, name, desc):
         super(GameObject, self).__init__(ids)
@@ -58,7 +56,6 @@ class GameObject(Identifiable):
     def long_description(self):
         return self.__desc
 
-
 class Item(GameObject):
     def __init__(self, ids, name, desc):
         super(Item, self).__init__(ids, name, desc)
@@ -66,13 +63,31 @@ class Item(GameObject):
             self.__name = name
             self.__desc = desc
 
-
 class Player(GameObject):
     def __init__(self, name, desc):
         super(Player, self).__init__(["me", "inventory"], name, desc)
         self.__name = name
         self.__desc = desc
+        self.__inv = Inventory()
 
+    def locate(self, input_id):
+        if self.are_you(input_id):
+            return self
+        if self.__inv.has_item(input_id):
+            return self.__inv.item_fetch(input_id)
+        return None
+
+    @property
+    def inventory(self):
+        return self.__inv
+
+    def full_description(self):
+        if self.__inv.item_list == "":
+            return "You're " + self.name + "\n"
+        else:
+            if __name__ == '__main__':
+                return "You're " + self.__name + ", " + self.__desc + ".\n" + "You're carrying:\n"\
+                       + self.__inv.item_list
 
 class Inventory(object):
     def __init__(self):
@@ -176,6 +191,10 @@ class TestItemClass(unittest.TestCase):
 class TestPlayerClass(unittest.TestCase):
     def setUp(self):
         self.player = Player("Viet", "Python programmer")
+        self.shovel = Item(["shovel", "spade"], "a shovel", "This is a might fine...")
+        self.computer = Item(["computer", "pc"], "a computer", "This is a desktop")
+        self.player.inventory.put_item(self.shovel)
+        self.player.inventory.put_item(self.computer)
 
     def tearDown(self):
         pass
@@ -184,6 +203,16 @@ class TestPlayerClass(unittest.TestCase):
         self.assertTrue(self.player.are_you("me"))
         self.assertTrue(self.player.are_you("inventory"))
 
+    def test_locate(self):
+        self.assertEqual(self.shovel, self.player.locate("shovel"))
+        self.assertEqual(self.computer, self.player.locate("computer"))
+        self.assertIsNone(self.player.locate("abc"))
+        self.assertEqual(self.player, self.player.locate("me"))
+        self.assertEqual(self.player, self.player.locate("inventory"))
+
+    def test_full_description(self):
+        self.assertEqual("You're Viet, Python programmer.\nYou're carrying:\na shovel (shovel)\na computer (computer)\n"
+                         , self.player.full_description())
 
 if __name__ == '__main__':
     unittest.main()
