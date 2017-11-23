@@ -13,6 +13,8 @@
     Last modified: 21 Nov 2017
 """
 import unittest
+from abc import ABCMeta, abstractmethod, abstractproperty
+
 
 # define Identifiable class
 class Identifiable(object):
@@ -58,6 +60,74 @@ class TestsIteration(unittest.TestCase):
         test = Identifiable([])
         test.add_identifier("hello")
         self.assertEqual(True, test.are_you("hello"))
+
+
+class GameObject(Identifiable):
+    @classmethod
+    def item_constructor(cls, ids, name, desc):
+        obj = cls()
+        if obj.first_id(ids[0]):
+            obj.__name = name
+            obj.__desc = desc
+        return obj
+
+    """
+    @classmethod
+    def player_constructor(cls, name, desc):
+        obj = cls()
+        obj.__name = name
+        obj.__desc = desc
+        return obj
+    """
+
+    def __init__(self, ids, name, desc):
+        super(GameObject, self).__init__(ids)
+        self.__name = name
+        self.__desc = desc
+
+    @property
+    def name(self):
+        return self.first_id
+
+    @property
+    def short_description(self):
+        return self.__name + " (" + self.first_id + ")"
+
+    @property
+    def long_description(self):
+        return self.__desc
+
+
+class Item(GameObject):
+    def __init__(self, ids, name, desc):
+        super(Item, self).__init__(ids, name, desc)
+        if self.are_you(ids[0]):
+            self.__name = name
+            self.__desc = desc
+
+class TestItemClass(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def test_item_is_identifiable(self):
+        shovel = Item(["shovel", "spade"], "a shovel", "This is a might fine...")
+        self.assertTrue(shovel.are_you("shovel"))
+
+    def test_item_name(self):
+        shovel = Item(["shovel", "spade"], "a shovel", "This is a might fine...")
+        self.assertEqual("shovel", shovel.name)
+
+    def test_item_short_description(self):
+        shovel = Item(["shovel", "spade"], "a shovel", "This is a might fine...")
+        self.assertEqual("a shovel (shovel)", shovel.short_description)
+
+    def test_item_long_description(self):
+        shovel = Item(["shovel", "spade"], "a shovel", "This is a might fine...")
+        self.assertEqual("This is a might fine...", shovel.long_description)
+
 
 if __name__ == '__main__':
     unittest.main()
