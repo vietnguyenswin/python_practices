@@ -13,8 +13,6 @@
     Last modified: 21 Nov 2017
 """
 import unittest
-from abc import ABCMeta, abstractmethod, abstractproperty
-
 
 # define Identifiable class
 class Identifiable(object):
@@ -63,23 +61,6 @@ class TestsIteration(unittest.TestCase):
 
 
 class GameObject(Identifiable):
-    @classmethod
-    def item_constructor(cls, ids, name, desc):
-        obj = cls()
-        if obj.first_id(ids[0]):
-            obj.__name = name
-            obj.__desc = desc
-        return obj
-
-    """
-    @classmethod
-    def player_constructor(cls, name, desc):
-        obj = cls()
-        obj.__name = name
-        obj.__desc = desc
-        return obj
-    """
-
     def __init__(self, ids, name, desc):
         super(GameObject, self).__init__(ids)
         self.__name = name
@@ -105,6 +86,52 @@ class Item(GameObject):
             self.__name = name
             self.__desc = desc
 
+class Player(GameObject):
+    def __init__(self, name, desc):
+        super(Player, self).__init__(["me", "inventory"], name, desc)
+        self.__name = name
+        self.__desc = desc
+
+class Inventory(object):
+    def __init__(self):
+        self.__items = []
+
+    def has_item(self, input_id):
+        for itm in self.__items:
+            if itm.are_you(input_id):
+                return True
+            else:
+                return False
+
+    def put_item(self, item):
+        self.__items.append(item)
+
+    def take_item(self, input_id):
+        for itm in self.__items:
+            if itm.are_you(input_id):
+                self.__items.remove(itm)
+                return itm
+
+    def item_fetch(self, input_id):
+        for itm in self.__items:
+            if itm.are_you(input_id):
+                return itm
+
+class TestInventoryClass(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def test_has_item_and_put_item(self):
+        shovel = Item(["shovel", "spade"], "a shovel", "This is a might fine...")
+        inv = Inventory()
+        inv.put_item(shovel)
+        self.assertTrue(inv.has_item("spade"))
+        self.assertTrue(inv.has_item("shovel"))
+        self.assertFalse(inv.has_item("abc"))
+
 class TestItemClass(unittest.TestCase):
     def setUp(self):
         pass
@@ -127,6 +154,18 @@ class TestItemClass(unittest.TestCase):
     def test_item_long_description(self):
         shovel = Item(["shovel", "spade"], "a shovel", "This is a might fine...")
         self.assertEqual("This is a might fine...", shovel.long_description)
+
+class TestPlayerClass(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def test_player_is_identifiable(self):
+        player = Player("Viet", "Python programmer")
+        self.assertTrue(player.are_you("me"))
+        self.assertTrue(player.are_you("inventory"))
 
 
 if __name__ == '__main__':
