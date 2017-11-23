@@ -132,6 +132,34 @@ class TestInventoryClass(unittest.TestCase):
         self.assertTrue(inv.has_item("shovel"))
         self.assertFalse(inv.has_item("abc"))
 
+    def test_item_fetch(self):
+        inv = Inventory()
+
+        shovel = Item(["shovel", "spade"], "a shovel", "This is a might fine...")
+        inv.put_item(shovel)
+        self.assertIsNotNone(inv.item_fetch("shovel"))
+        self.assertIsNotNone(inv.item_fetch("spade"))
+
+        computer = Item(["computer", "pc"], "a computer", "This is a desktop")
+        inv.put_item(computer)
+        self.assertIsNotNone(inv.item_fetch("computer"))
+        self.assertIsNotNone(inv.item_fetch("pc"))
+
+        self.assertIsNone(inv.item_fetch("abc"))
+
+    def take_item(self):
+        inv = Inventory()
+
+        shovel = Item(["shovel", "spade"], "a shovel", "This is a might fine...")
+        inv.put_item(shovel)
+        self.assertIsNotNone(inv.item_fetch("shovel"))
+        self.assertIsNone(inv.take_item("shovel"))
+
+        computer = Item(["computer", "pc"], "a computer", "This is a desktop")
+        inv.put_item(computer)
+        self.assertIsNotNone(inv.item_fetch("computer"))
+        self.assertIsNone(inv.take_item("computer"))
+
 class TestItemClass(unittest.TestCase):
     def setUp(self):
         pass
